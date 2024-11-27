@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from retrieve_format import scrape_clean
-from mastermind import analyze_financial_trends
+from .retrieve_format import scrape_clean
+from .mastermind import analyze_financial_trends
 from pydantic import BaseModel
-from sentiment_prompt import scrape
+from .sentiment_prompt import scrape
 import re
 import json
 
