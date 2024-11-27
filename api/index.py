@@ -32,6 +32,7 @@ class MessageRequest(BaseModel):
 class SummaryRequest(BaseModel):
     key_words: str
     summary: str
+    
 
 @app.post("/api/post_data")
 async def post_data(request: MessageRequest):
