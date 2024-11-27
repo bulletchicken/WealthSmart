@@ -31,7 +31,7 @@ const Simulation = () => {
     setLoading(true);
     setError(null);
     try {
-      const url = new URL("http://localhost:8000/api/py/gpt_simulation");
+      const url = new URL("/api/py/gpt_simulation");
       url.searchParams.append("prompt", question);
 
       const response = await fetch(url.toString(), {
