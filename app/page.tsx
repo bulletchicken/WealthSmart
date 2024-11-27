@@ -11,7 +11,7 @@ const Page = () => {
   // Fetch function now uses the state `url` from the form input
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/post_data", {
+      const response = await fetch("http://localhost:8000/api/py/post_data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

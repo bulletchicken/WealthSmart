@@ -35,7 +35,7 @@ const Insights = () => {
     setError(null); // Reset error before fetch
 
     try {
-      const url = new URL("http://localhost:8000/api/gpt_trends");
+      const url = new URL("http://localhost:8000/api/py/gpt_trends");
       const response = await fetch(url.toString(), {
         method: "GET",
         headers: {

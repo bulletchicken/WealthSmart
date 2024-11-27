@@ -21,7 +21,7 @@ const ChatArea = () => {
     event.preventDefault();
     setLoading(true); // Start loading
     try {
-      const response = await fetch("http://localhost:8000/api/post_context", {
+      const response = await fetch("http://localhost:8000/api/py/post_context", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

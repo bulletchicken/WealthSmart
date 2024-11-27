@@ -18,7 +18,7 @@ const LineChart = () => {
 
   // Fetch graph data
   useEffect(() => {
-    fetch("http://localhost:8000/api/get_data", {
+    fetch("http://localhost:8000/api/py/get_data", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,10 +34,10 @@ const LineChart = () => {
     const fetchTitles = async () => {
       try {
         const [expenseRes, revenueRes] = await Promise.all([
-          fetch("http://localhost:8000/api/expense_titles").then((res) =>
+          fetch("http://localhost:8000/api/py/expense_titles").then((res) =>
             res.json()
           ),
-          fetch("http://localhost:8000/api/revenue_titles").then((res) =>
+          fetch("http://localhost:8000/api/py/revenue_titles").then((res) =>
             res.json()
           ),
         ]);

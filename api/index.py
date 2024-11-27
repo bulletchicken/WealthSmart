@@ -34,7 +34,7 @@ class SummaryRequest(BaseModel):
     summary: str
     
 
-@app.post("/api/post_data")
+@app.post("/api/py/post_data")
 async def post_data(request: MessageRequest):
     
     # Extract Google Sheets ID
@@ -47,7 +47,7 @@ async def post_data(request: MessageRequest):
     # Return the response
     return {"message": "Data processed successfully"}
 
-@app.post("/api/post_context")
+@app.post("/api/py/post_context")
 async def post_context(company: SummaryRequest):
     newsTopics = company.key_words
     summary_text = company.summary
@@ -62,7 +62,7 @@ async def post_context(company: SummaryRequest):
         print(data[1]['total_results'])
         return data[1]['total_results']
 
-@app.get("/api/get_data")
+@app.get("/api/py/get_data")
 async def get_data():
     try:
         with open("pretend_this_is_a_database/income_data.json", "r") as file:
@@ -72,7 +72,7 @@ async def get_data():
         raise HTTPException(status_code=404, detail="Data file not found")
     
     
-@app.get("/api/expense_titles")
+@app.get("/api/py/expense_titles")
 async def get_expense_titles():
     try:
         with open("labels/expense_titles.json", "r") as file:
@@ -91,12 +91,12 @@ async def get_revenue_titles():
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="Revenue titles file not found")
     
-@app.get("/api/gpt_trends")
+@app.get("/api/py/gpt_trends")
 async def get_gpt_response():
     response = analyze_financial_trends("In point form, analyze the top 3 trends between the companies financial data and use real-world data/news to establish correlations and recommendations. Clearly specify the numbers, their context, and what they represent. If necessary, create assumptions, but explicitly state that they are hypothetical. Factor in the time of year and its potential impact on the analysis. Use emojis ocassionally")
     return {"response": response}
 
-@app.get("/api/gpt_simulation")
+@app.get("/api/py/gpt_simulation")
 async def get_gpt_simulation(prompt: str):
     # Call the analyze_financial_trends function (no 'await' needed if it's synchronous)
     prompt+= ". Run a short simulation of the aftermath. Then provide pros and cons"
