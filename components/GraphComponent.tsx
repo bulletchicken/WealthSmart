@@ -192,53 +192,6 @@ const datasets = Object.keys(graphData).map((dataset) => {
       justifyContent: "center",
     }}
   >
-    {/*
-    <select
-      style={{
-        padding: "10px 20px",
-        backgroundColor: "#002f4f",
-        color: "white",
-        border: "none",
-        borderRadius: "5px",
-        fontWeight: "bold",
-        cursor: "pointer",
-        fontSize: "16px",
-        transition: "background-color 0.2s ease",
-      }}
-      onChange={(e) => handleDatasetChange(e.target.value)}
-      multiple
-    >
-      {revenueTitles.map((key) => (
-        <option key={key} value={key}>
-          {key}
-        </option>
-      ))}
-    </select>
-
-    <select
-      style={{
-        padding: "10px 20px",
-        backgroundColor: "#bf3d5e",
-        color: "white",
-        border: "none",
-        borderRadius: "5px",
-        fontWeight: "bold",
-        cursor: "pointer",
-        fontSize: "16px",
-        transition: "background-color 0.2s ease",
-      }}
-      onChange={(e) => handleDatasetChange(e.target.value)}
-      multiple
-    >
-      {expenseTitles.map((key) => (
-        <option key={key} value={key}>
-          {key}
-        </option>
-      ))}
-    </select>
-
-      */}
-
   </div>
 
   {/* Main Graph */}
