@@ -1,10 +1,11 @@
 from googleapiclient.discovery import build
 import json
+import os
 
 RANGE_NAME = 'Sheet1!A1:Z1000'
 
 # Google Cloud API key
-API_KEY = '  '
+API_KEY = os.environ.get("CLOUD_API_KEY")
 
 def authenticate_sheets(api_key):
     return build('sheets', 'v4', developerKey=api_key).spreadsheets()
@@ -49,8 +50,6 @@ def scrape_clean(SPREADSHEET_ID):
         
         data_dict = create_key_value_dict(values)
         print("Key-Value Data Dictionary:")
-        #for key, value in data_dict.items():
-        #    print(f'{key}: {value}')
         
         print(data_dict)
         

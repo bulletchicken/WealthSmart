@@ -1,8 +1,9 @@
 import openai
+import os
 import json
 
 # Set up OpenAI API key (replace with your actual API key)
-openai.api_key = "  "
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Function to make a call to GPT and get a response
 def get_gpt_response(prompt: str):

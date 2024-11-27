@@ -1,13 +1,15 @@
 import requests
+import os
 
 async def scrape(query: str):
     # NewsAPI request
+    news_key = os.environ.get("NEWS_API_KEY")
     url = (
         f'https://newsapi.org/v2/everything?'
         f'q={query}&'
-        'sortBy=popularity&'
+        f'sortBy=popularity&'
         #newsapi apikey
-        'apiKey=   '
+        f'apiKey={news_key}'
         
     )
 
