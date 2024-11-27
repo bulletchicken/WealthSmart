@@ -52,9 +52,9 @@ const LineChart = () => {
   }, []);
 
   const handleDatasetChange = (dataset: string) => {
-    setSelectedDatasets((prev) =>
+    setSelectedDatasets((prev: any) =>
       prev.includes(dataset)
-        ? prev.filter((item) => item !== dataset) // Remove if already selected
+        ? prev.filter((item: any) => item !== dataset) // Remove if already selected
         : [...prev, dataset] // Add if not selected
     );
   };
@@ -124,8 +124,12 @@ const datasets = Object.keys(graphData).map((dataset) => {
         beginAtZero: false,
         ticks: {
           color: "#FFFFFF", // Y-axis tick color
-          callback: (value: number) => {
-            return value.toLocaleString();
+          callback: (value: string | number) => {
+            // Ensure value is a number before formatting
+            if (typeof value === "number") {
+              return value.toLocaleString();
+            }
+            return value; // Fallback for string values
           },
         },
       },
@@ -137,7 +141,7 @@ const datasets = Object.keys(graphData).map((dataset) => {
     },
     plugins: {
       legend: {
-        onClick: (e, legendItem, legend) => {
+        onClick: (e: any, legendItem: any, legend: any) => {
           const chart = legend.chart;
           const datasetIndex = legendItem.datasetIndex;
           const dataset = chart.data.datasets[datasetIndex];
@@ -155,8 +159,8 @@ const datasets = Object.keys(graphData).map((dataset) => {
           font: {
             size: 14,
           },
-          generateLabels: (chart) => {
-            return chart.data.datasets.map((dataset, i) => ({
+          generateLabels: (chart: any) => {
+            return chart.data.datasets.map((dataset: any, i: any) => ({
               text: dataset.label,
               fillStyle: dataset.borderColor,
               fontColor: dataset.hidden ? "#016aaa" : "#FFFFFF", // Set text color based on visibility

@@ -17,7 +17,7 @@ const formatResponse = (text: string) => {
 
 const Simulation = () => {
   const [question, setQuestion] = useState<string>("");
-  const [response, setResponse] = useState<string | null>(null);
+  const [response, setResponse] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,7 +47,7 @@ const Simulation = () => {
       const result = await response.json();
 
       setResponse(result.response);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message || "Error: Unable to get a response from the server");
     } finally {
       setLoading(false);
