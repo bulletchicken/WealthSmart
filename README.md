@@ -68,4 +68,31 @@ Weighed out the pros and cons compared to some of the other web scrappers out th
 
 ## Installation
 
-1. npm i
+1. Clone the Repo
+```sh
+git clone https://github.com/bulletchicken/WealthSmart
+```
+
+2. Install NPM packages
+```sh
+npm install 
+```
+
+3. Export Environment Variables
+```sh
+export OPENAI_API_KEY=""
+export NEWS_API_KEY=""
+export CLOUD_API_KEY=""
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+```
+
+4. Backend Setup (FastAPI)
+```sh
+uvicorn index:app --reload
+```
+
+5. Run Development (Next.js)
+```sh
+npm run dev
+```
