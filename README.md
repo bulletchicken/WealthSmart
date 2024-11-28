@@ -31,9 +31,12 @@ When I first learned about Quanto during my job hunt, what I really caught my ey
 # Features
 
 Sorted by coolest to least cool:
-1. **DIY RAG framework for the AI:** Contextualizing the AI was the main idea of this project. Giving it both context based off of news headlines and a user's company summary help supercharge and sculpt the AI's analysis. To make this happen, I used NewsAPI to scrape the articles, Google Sheets API to scrape income statement data, a personal user summary, and GPT4o-mini to hold it all together.
-2. **AWS Cloud Database:** Something about using the s3 removed all the horrendous memories I've had with cloud databases because of how simple it was. And for that, I would rank it number 2.
-3. 
+1. **DIY RAG framework for supercharging the AI:** Contextualizing the AI was the main idea of this project. Giving it both context based off of news headlines and a user's company summary to help supercharge and sculpt the AI's analysis. At first, I thought ChatGPT already had access to the internet but it kept yelling at me whenever I tried to feed it links. So, to feed it knowledge on latest trends, I used NewsAPI to scrape the articles, Google Sheets API to scrape income statement data, a personal user summary, and GPT4o-mini to hold it all together.
+2. **AWS Cloud Database:** Something about using the s3 removed all the horrendous memories I've had with cloud databases because of how simple it was. And for that, I would rank it number 2. It might not be a cool feature, but it sure is a cool technology. Maybe Quanto could use it to store client data and profiles!
+3. **Google Sheets Scrape and Clean:** Might look like a simple feature, but was proved to be the most problematic. When going through income statements, I quickly realized, so many different potential variation for expense and revenue titles that it made it hard to depict between the two. But after a long long time trying to develop an algorithm to look properly go through the data, I realized I can just divide the data using the headers that universally exist on income statements!
+4. **GIFS for page loaders**
+5. **Animated Counter for the number of news articles found**
+6. **Overall polish & design**
 
 ---
 
