@@ -30,11 +30,19 @@ When I first learned about Quanto during my job hunt, what I really caught my ey
 
 ---
 
-## Features
+## Techstack
 
-- ✨ Feature 1  
-- 🌟 Feature 2  
-- 🚀 Feature 3  
+**Stars of the Show**
+- ⚡ **Next.js**: For building a modern, full-stack web app
+- ✨ **FastAPI**: For building a high-performance backend with Python.
+
+**Stars, but kinda like the Side Characters**
+- 🚀 **OpenAI API**: To power AI-driven features like text generation and sentiment analysis.
+- ☁️ **AWS S3(Boto3 & Botocore)**: To upload, store, and retrieve generated & scraped data
+- 💾 **Google Cloud API**: For seamless integration with Google services and google sheets.
+- 📰 **NewsAPI**: For fetching and analyzing the latest news articles.
+- 📦 **Pydantic**: For data validation and settings management.
+
 
 ---
 
