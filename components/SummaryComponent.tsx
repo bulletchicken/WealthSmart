@@ -31,13 +31,16 @@ const ChatArea = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setSourcesFound(data); // Set final source count
+        console.log(data)
+        setSourcesFound(data.total_results); // Set final source count
       } else {
         console.error("Error: API returned an error status.");
+        console.log("woof")
         setSourcesFound(0); // Default to 0 if an error occurs
       }
     } catch (error) {
       console.error("Error submitting data:", error);
+      console.log("woof")
       setSourcesFound(0);
     } finally {
       setLoading(false); // Stop loading
@@ -46,10 +49,13 @@ const ChatArea = () => {
 
   // Animate the count up when `sourcesFound` changes
   useEffect(() => {
+    console.log(sourcesFound > 0)
     if (sourcesFound > 0) {
+      
       let count = 0;
       const increment = Math.ceil(sourcesFound / 50); // Determine step size (50 steps)
       const interval = setInterval(() => {
+        console.log("hit2")
         count += increment;
         if (count >= sourcesFound) {
           setDisplayedSources(sourcesFound); // Ensure it ends at the exact value
@@ -58,7 +64,7 @@ const ChatArea = () => {
           setDisplayedSources(count);
         }
       }, 20); // 20ms per step for smooth animation
-
+      console.log("end")
       return () => clearInterval(interval); // Cleanup interval on component unmount
     }
   }, [sourcesFound]);

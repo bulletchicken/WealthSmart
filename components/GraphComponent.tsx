@@ -3,7 +3,9 @@
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import "chart.js/auto";
+import { Chart, ChartOptions } from 'chart.js';
 import { Line, Bar } from "react-chartjs-2";
+
 
 
 type GraphData = {
@@ -13,8 +15,47 @@ type GraphData = {
 const LineChart = () => {
   const [graphData, setGraphData] = useState<GraphData | null>(null);
   const [selectedDatasets, setSelectedDatasets] = useState<string[]>(["Net Income"]);
-  const [expenseTitles, setExpenseTitles] = useState<string[]>([]);
-  const [revenueTitles, setRevenueTitles] = useState<string[]>([]);
+
+  const expenseTitles = [
+    "Salaries & Wages",
+    "Depreciation Expenses",
+    "Office Expenses",
+    "Rent Expense",
+    "Travel Expenses",
+    "Maintenance Expenses",
+    "Advertising Expenses",
+    "<Other Expense>",
+    "Total Operating Expenses",
+    "Interest Income (Expense)",
+    "Income Tax Expense",
+    "Cost of Goods Sold",
+    "Utilities",
+    "Insurance",
+    "Miscellaneous Expenses",
+  ];
+
+  const revenueTitles = [
+    "Sales",
+    "Sales Returns",
+    "Sales Discounts",
+    "<Other Revenue>",
+    "Net Sales",
+    "Cost of Goods Sold",
+    "Gross Profit",
+    "Income From Operations",
+    "Income Before Income Taxes",
+    "Net Income",
+    "Interest Income",
+    "Product Revenue",
+    "Service Revenue",
+    "Dividend Income",
+    "Rental Income",
+    "Investment Revenue",
+    "Other Income",
+    "Revenue",
+  ];
+
+
 
   // Fetch graph data
   useEffect(() => {
@@ -27,28 +68,6 @@ const LineChart = () => {
       .then((response) => response.json())
       .then((data) => setGraphData(data))
       .catch((error) => console.error("Error:", error));
-  }, []);
-
-  // Fetch expense and revenue titles
-  useEffect(() => {
-    const fetchTitles = async () => {
-      try {
-        const [expenseRes, revenueRes] = await Promise.all([
-          fetch("/api/py/expense_titles").then((res) =>
-            res.json()
-          ),
-          fetch("/api/py/revenue_titles").then((res) =>
-            res.json()
-          ),
-        ]);
-        setExpenseTitles(expenseRes);
-        setRevenueTitles(revenueRes);
-      } catch (error) {
-        console.error("Error fetching titles:", error);
-      }
-    };
-
-    fetchTitles();
   }, []);
 
   const handleDatasetChange = (dataset: string) => {
@@ -118,191 +137,174 @@ const datasets = Object.keys(graphData).map((dataset) => {
     datasets,
   };
 
-  const options = {
+
+  const options: ChartOptions<'line'> = {
+    animation: {
+      duration: 500,
+      easing: "easeInOutQuad",
+    },
     scales: {
       y: {
         beginAtZero: false,
         ticks: {
-          color: "#FFFFFF", // Y-axis tick color
-          callback: (value: string | number) => {
-            // Ensure value is a number before formatting
-            if (typeof value === "number") {
-              return value.toLocaleString();
-            }
-            return value; // Fallback for string values
+          color: "#FFFFFF", 
+          callback: function(value) {
+            return typeof value === 'number' 
+              ? value.toLocaleString() 
+              : value;
           },
         },
       },
       x: {
         ticks: {
-          color: "#FFFFFF", // X-axis tick color
+          color: "#FFFFFF",
         },
       },
     },
     plugins: {
       legend: {
-        onClick: (e: any, legendItem: any, legend: any) => {
+        onClick: (e, legendItem, legend) => {
           const chart = legend.chart;
           const datasetIndex = legendItem.datasetIndex;
-          const dataset = chart.data.datasets[datasetIndex];
-  
+          const dataset = chart.data.datasets[datasetIndex!];
+          
           // Toggle the hidden state of the dataset
           dataset.hidden = !dataset.hidden;
-  
-          // Update the color of the legend text based on visibility
-          legendItem.fontColor = dataset.hidden ? "#ccc" : "#FFFFFF"; // Grey for hidden, white for visible
-  
+          
+          // Update the chart
           chart.update();
         },
         labels: {
-          usePointStyle: true, // Optional: use point style for legends
+          usePointStyle: true,
           font: {
             size: 14,
           },
-          generateLabels: (chart: any) => {
-            return chart.data.datasets.map((dataset: any, i: any) => ({
+          generateLabels: (chart) => {
+            return chart.data.datasets.map((dataset: any, i: number) => ({
               text: dataset.label,
               fillStyle: dataset.borderColor,
-              fontColor: dataset.hidden ? "#016aaa" : "#FFFFFF", // Set text color based on visibility
+              fontColor: dataset.hidden ? "#016aaa" : "#FFFFFF",
               datasetIndex: i,
             }));
           },
         },
       },
-      animation: {
-        duration: 500, // smooth transition duration
-        easing: "easeInOutQuad", // easing function for smoothness
-      },
     },
   };
 
   return (
-    <div
+    <div>
+      <div>
 
-    >
-<div>
-
-  {/* Dropdowns for selecting datasets */}
-  <div
-    style={{
-      marginBottom: "20px",
-      display: "flex",
-      gap: "20px",
-      flexWrap: "wrap",
-      justifyContent: "center",
-    }}
-  >
-  </div>
-
-  {/* Main Graph */}
-  <div
-    style={{
-      backgroundColor: "rgba(0, 0, 0, 0.7)",
-      padding: "30px",
-      borderRadius: "10px",
-      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-      width: "90%",
-      height: "45vh",
-      margin: "0 auto",
-    }}
-  >
-    <Line data={data} options={options} />
-  </div>
-
-  {/* Mini-graphs */}
-  <div
-    style={{
-      display: "flex",
-      gap: "20px",
-      marginTop: "20px",
-      justifyContent: "center",
-      
-    }}
-  >
-    {["Gross Profit", "Sales", "Total Operating Expenses"].map((dataset) => {
-      const miniData = {
-        labels: [
-          "Q1",
-          "Q1",
-          "Q1",
-          "Q2",
-          "Q2",
-          "Q2",
-          "Q3",
-          "Q3",
-          "Q3",
-          "Q4",
-          "Q4",
-          "Q4"
-        ],
-        datasets: [
-          {
-            label: dataset,
-            data: graphData[dataset]?.slice(0, graphData[dataset].length - 1).map((value) =>
-              parseFloat(value.replace(/[^0-9.-]+/g, ""))
-            
-            ),
-            fontColor: "#ffffff",
-            fill: true,
-            backgroundColor:
-              dataset === "Gross Profit"
-                ? "rgba(10, 256, 10, 0.8)"
-                : dataset === "Total Operating Expenses"
-                ? "rgba(255, 99, 132, 0.8)"
-                : "rgba(50, 200, 207, 0.8)",
-            borderColor:
-              dataset === "Sales"
-                ? "rgb(75, 192, 192)"
-                : dataset === "Total Operating Expenses"
-                ? "rgb(255, 99, 132)"
-                : "rgb(201, 203, 207)",
-            tension: 0.4,
-          },
-        ],
-      };
-
-      return (
+        {/* Main Graph */}
         <div
-          key={dataset}
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.7)",
-            padding: "20px",
+            padding: "30px",
             borderRadius: "10px",
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-            height:"40%",
-            width: "26%",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+            width: "90%",
+            height: "45vh",
+            margin: "0 auto",
           }}
         >
-          <Bar
-            data={miniData}
-            options={{
-              scales: {
-                y: {
-                  ticks: {
-                    color: "#FFFFFF", // X-axis tick color
-                  },
-                  beginAtZero: false,
-                },
-                x: {
-                  ticks: {
-                    color: "#FFFFFF", // X-axis tick color
-                  },
-                },
-              },
-              plugins: {
-                legend: {
-                  labels: {
-                    color: "#ffffff"
-                  }
-                }
-              }
-            }}
-          />
+          <Line data={data} options={options} />
         </div>
-      );
-    })}
-  </div>
-</div>
+
+        {/* Mini-graphs */}
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            marginTop: "20px",
+            justifyContent: "center",
+            
+          }}
+        >
+          {["Gross Profit", "Sales", "Total Operating Expenses"].map((dataset) => {
+            const miniData = {
+              labels: [
+                "Q1",
+                "Q1",
+                "Q1",
+                "Q2",
+                "Q2",
+                "Q2",
+                "Q3",
+                "Q3",
+                "Q3",
+                "Q4",
+                "Q4",
+                "Q4"
+              ],
+              datasets: [
+                {
+                  label: dataset,
+                  data: graphData[dataset]?.slice(0, graphData[dataset].length - 1).map((value) =>
+                    parseFloat(value.replace(/[^0-9.-]+/g, ""))
+                  
+                  ),
+                  fontColor: "#ffffff",
+                  fill: true,
+                  backgroundColor:
+                    dataset === "Gross Profit"
+                      ? "rgba(10, 256, 10, 0.8)"
+                      : dataset === "Total Operating Expenses"
+                      ? "rgba(255, 99, 132, 0.8)"
+                      : "rgba(50, 200, 207, 0.8)",
+                  borderColor:
+                    dataset === "Sales"
+                      ? "rgb(75, 192, 192)"
+                      : dataset === "Total Operating Expenses"
+                      ? "rgb(255, 99, 132)"
+                      : "rgb(201, 203, 207)",
+                  tension: 0.4,
+                },
+              ],
+            };
+
+            return (
+              <div
+                key={dataset}
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  padding: "20px",
+                  borderRadius: "10px",
+                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+                  height:"40%",
+                  width: "26%",
+                }}
+              >
+                <Bar
+                  data={miniData}
+                  options={{
+                    scales: {
+                      y: {
+                        ticks: {
+                          color: "#FFFFFF", // X-axis tick color
+                        },
+                        beginAtZero: false,
+                      },
+                      x: {
+                        ticks: {
+                          color: "#FFFFFF", // X-axis tick color
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        labels: {
+                          color: "#ffffff"
+                        }
+                      }
+                    }
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const HomePage = () => {
         justifyContent: "center",
         gap: "20px",
         padding: "3%",
-        maxHeight:"150vh"
+        height:"100%"
       }}
     >
       {/* Header and Graph Section */}

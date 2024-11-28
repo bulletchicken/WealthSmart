@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{margin:"0", maxHeight:"150vh"}}>{children}</body>
+      <body style={{margin:"0", height:"130vh"}}>{children}</body>
     </html>
   )
 }

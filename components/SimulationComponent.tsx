@@ -17,7 +17,7 @@ const formatResponse = (text: string) => {
 
 const Simulation = () => {
   const [question, setQuestion] = useState<string>("");
-  const [response, setResponse] = useState<string>("");
+  const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -56,7 +56,7 @@ const Simulation = () => {
 
   const handleDownload = () => {
     const element = document.createElement("a");
-    const blob = new Blob([response], { type: "text/plain" });
+    const blob = new Blob([response!], { type: "text/plain" });
     element.href = URL.createObjectURL(blob);
     element.download = "financial_simulation_analysis.txt";
     document.body.appendChild(element);
