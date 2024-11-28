@@ -52,12 +52,15 @@ def analyze_financial_trends(message: str):
     try:
         # Retrieve income data and company description from S3
         income_data = retrieve_from_s3("income_data.json")
+        
         company_description = retrieve_from_s3("summary.json")
-
+        company_info = company_description.get("summary")
+        
+        news_extraction = retrieve_from_s3("news_articles.json")
+        news_data = news_extraction.get("titles")
         # Extract relevant data
-        company_info = company_description.get("summary", "No company description available.")
-        news_data = company_description.get("titles", "No news data available.")
-
+        
+        
         # Prepare the full data for GPT
         prompt = (
             f"Company Description: {json.dumps(company_info)}\n\n"

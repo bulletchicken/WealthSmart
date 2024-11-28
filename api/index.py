@@ -93,8 +93,6 @@ async def post_context(company: SummaryRequest):
     
     # Scrape articles based on keywords
     cleaned_articles = await scrape(company.key_words)
-
-    upload_to_s3(json.dumps(cleaned_articles), "cleaned_articles.json")
     
     total_results = cleaned_articles.get("total_results", 0)
     
