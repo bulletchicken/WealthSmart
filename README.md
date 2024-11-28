@@ -9,9 +9,10 @@
 
 - [Overview](#overview)
 - [Inspiration](#Inspiration)
+- [Features](#Features)
 - [Techstack](#Techstack)
 - [Rationale](#Rationale)
-- [Installation](#contact)
+- [Installation](#Installation)
 
 ---
 
@@ -24,6 +25,14 @@
 # Inspiration
 
 When I first learned about Quanto during my job hunt, what I really caught my eye was the landing page saying "Stress-Free Financials" and tips for small businesses. Something in my head flickered because my parents run a small business together 🧑‍🧑‍🧒‍🧒 and I always see them up at 2am doing their own accounting on a crappy computer running Microsoft Excel (they pull me in to help out too). So, I dug deeper. I found that Quanto used technologies such as Xero which had a financial forecasting, but did not seem to take into account data from the news.💡! Right there and then, the flickering light bulb went full bright and appeared above my head. Of course knowing me, I hoped right onto VS code to bring my idea to life.
+
+---
+# Features
+
+Sorted by coolest to least cool:
+1. **DIY RAG framework for the AI:** Contextualizing the AI was the main idea of this project. Giving it both context based off of news headlines and a user's company summary help supercharge and sculpt the AI's analysis. To make this happen, I used NewsAPI to scrape the articles, Google Sheets API to scrape income statement data, a personal user summary, and GPT4o-mini to hold it all together.
+2. **AWS Cloud Database:** Something about using the s3 removed all the horrendous memories I've had with cloud databases because of how simple it was. And for that, I would rank it number 2.
+3. 
 
 ---
 
@@ -63,10 +72,9 @@ I took an accounting class not too long ago and we made so many income statement
 Weighed out the pros and cons compared to some of the other web scrappers out there, and this one seems to produce the most specialized results, allowing me to filter by keywords, date, certain publishers, and even provide a break down on who these publishers were. The ease of use with their API also drew me in because I was in a time crunch balancing all my tests out.
 
 
-
 ---
 
-## Installation
+# Installation
 
 1. Clone the Repo
 ```sh
