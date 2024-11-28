@@ -12,6 +12,7 @@
 - [Features](#Features)
 - [Techstack](#Techstack)
 - [Rationale](#Rationale)
+- [Limitations](#Limitations)
 - [Installation](#Installation)
 
 ---
