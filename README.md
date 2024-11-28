@@ -39,8 +39,9 @@ Sorted by coolest to least cool:
 2. **AWS Cloud Database:** Something about using the s3 removed all the horrendous memories I've had with cloud databases because of how simple it was. And for that, I would rank it number 2. It might not be a cool feature, but it sure is a cool technology. Maybe Quanto could use it to store client data and profiles!
 3. **Google Sheets Scrape and Clean:** Might look like a simple feature, but was proved to be the most problematic. When going through income statements, I quickly realized, so many different potential variation for expense and revenue titles that it made it hard to depict between the two. But after a long long time trying to develop an algorithm to look properly go through the data, I realized I can just divide the data using the headers that universally exist on income statements!
 4. **GIFS for page loaders**
-5. **Animated Counter for the number of news articles found**
-6. **Overall polish & design**
+5. **Division of components:** The entire project was built from many components and done so in a very organized and lovely way. On the dashboard, the graph become one component, and the window for the tabs on the right was a component itself. Within, there were 4 sub components for each feature.
+6. **Animated Counter for the number of news articles found**
+7. **Overall polish & design**
 
 ---
 
