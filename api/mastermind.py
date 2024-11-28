@@ -37,7 +37,10 @@ def get_gpt_response(prompt: str):
             {"role": "system", "content": "You are a financial advisor specializing in helping small businesses make data-driven decisions. Provide advice by talking about the numbers, and connecting the company’s summary and financial data to relevant real-world news given. Make reasonable assumptions, but clearly state when you’re speculating. Use straightforward, easy-to-digest language, and focus on balancing positives (opportunities) and negatives (risks). Relate costs, challenges, and strategies directly to the company’s specific needs. Ensure your advice is actionable and insightful, helping the business grow in today’s market."},
             {"role": "user", "content": prompt}
         ],
-        temperature=0.8
+        temperature=0.8,
+        #avoid 504 gateway timeout :(
+        max_tokens=300
+        
     )
     return response.choices[0].message.content
 
