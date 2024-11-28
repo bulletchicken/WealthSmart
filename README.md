@@ -24,7 +24,7 @@
 
 # Inspiration
 
-When I first learned about Quanto during my job hunt, what I really caught my eye was the landing page saying "Stress-Free Financials" and tips for small businesses. Something in my head flickered because my parents run a small business together 🧑‍🧑‍🧒‍🧒 and I always see them up at 2am doing their own accounting on a crappy computer running Microsoft Excel (they pull me in to help out too). So, I dug deeper. I found that Quanto used technologies such as Xero which had a financial forecasting, but did not seem to take into account data from the news.💡! Right there and then, the flickering light bulb went full bright and appeared above my head. Of course knowing me, I hoped right onto VS code to bring my idea to life.
+When I first learned about Quanto during my job hunt, what I really caught my eye was the landing page saying "Stress-Free Financials" and tips for small businesses. Something in my head flickered because my parents run a small business together 🧑‍🧑‍🧒‍🧒 and I always see them up at 2am doing their own accounting on a crappy computer running Microsoft Excel (they pull me in to help out too). So, I dug deeper. I found that Quanto used technologies such as Xero which had a financial forecasting service, but did not seem to take into account data from the news.💡! Right there and then, the flickering light bulb went full bright and appeared above my head. Of course knowing me, I hoped right onto VS code to bring my idea to life.
 
 ---
 # Features
