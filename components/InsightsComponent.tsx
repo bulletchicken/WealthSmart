@@ -35,8 +35,7 @@ const Insights = () => {
     setError(null); // Reset error before fetch
 
     try {
-      const url = new URL("/api/py/gpt_trends");
-      const response = await fetch(url.toString(), {
+      const response = await fetch("/api/py/gpt_trends", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
