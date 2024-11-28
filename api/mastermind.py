@@ -41,7 +41,7 @@ def get_gpt_response(prompt: str):
         ],
         temperature=0.8,
         #avoid 504 gateway timeout :(
-        max_tokens=250
+        max_tokens=300
         
     )
     print(response)
