@@ -71,6 +71,15 @@ I took an accounting class not too long ago and we made so many income statement
 **NewsAPI**
 Weighed out the pros and cons compared to some of the other web scrappers out there, and this one seems to produce the most specialized results, allowing me to filter by keywords, date, certain publishers, and even provide a break down on who these publishers were. The ease of use with their API also drew me in because I was in a time crunch balancing all my tests out.
 
+---
+
+# Limitations
+
+1. max_tokens: Currently the biggest struggle with WealthSmart is minimizing how long it takes to respond to the user. I also had to set a max number of tokens that can be requested from ChatGPT before hitting a 504 gateway error. With a limited amount, often time responses would get cut off and not cover the entire scope of providing feedback, connecting it to real world news, etc. .
+
+2. Spreadsheet Titles: The original idea was to use Google Cloud's NLP to perform a semantic search to identify wether a title should be classified as an expense or income. However,that was no longer viable after the long process times as well as extra development costs. So as a substitute, there is a long array of potential titles for expenses and income that is used to classify them when producing the graphs.
+   
+3. Headlines only: While the NewsAPI was able to scrape thousands of headlines and url to news articles, testing with different APIs to actually access these URLs showed to be too troublesome in its formating, and takes too much time to get back to the user. Another problem I found with this was that there would be too many tokens being fed into ChatGPT adding even more time, and a lot of these articles were a bit off topic, skewing the advice the AI gives.
 
 ---
 
