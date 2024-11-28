@@ -81,9 +81,9 @@ Weighed out the pros and cons compared to some of the other web scrappers out th
 
 ---
 
-# Limitations
+# Limitations and Debugging
 
-1. max_tokens: Currently the biggest struggle with WealthSmart is minimizing how long it takes to respond to the user. I also had to set a max number of tokens that can be requested from ChatGPT before hitting a 504 gateway error. With a limited amount, often time responses would get cut off and not cover the entire scope of providing feedback, connecting it to real world news, etc. .
+1. Gateway timeout: Currently the biggest struggle with WealthSmart is minimizing how long it takes to respond to the user. On local development, I have all the time in the world, but on vercel it's like 5 seconds max. So to solve this, I bought Vercel Pro. At first I set a max number of tokens that can be requested from ChatGPT before hitting a 504 gateway error. However, testing some edge cases like those where there are thousands of scrapped news articles, the processing time took way too long even with a limit of about 100 tokens. With a limited amount, often time responses would get cut off and not cover the entire scope of providing feedback, connecting it to real world news, etc. . That's why I decided that the best choice would just be to upgrade my project to access more of Vercel's potential.
 
 2. Spreadsheet Titles: The original idea was to use Google Cloud's NLP to perform a semantic search to identify wether a title should be classified as an expense or income. However,that was no longer viable after the long process times as well as extra development costs. So as a substitute, there is a long array of potential titles for expenses and income that is used to classify them when producing the graphs.
    
