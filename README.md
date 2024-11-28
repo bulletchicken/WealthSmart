@@ -19,7 +19,7 @@
 
 # Overview
 
-[**Quanto Engineering Application**] - If everything were just 1s and 0s, the world would be boring—no pop music, no socializing, and definitely no Instagram Reels. These are the things in life that make us, well, human. And that goes for accounting and finance too! It's not all just about the numbers. People have always been influenced because of opinions, creativity, and of course, the latest news! So WealthSmart takes this idea to heart by contextualizing its financial predicitons and analysis with thousands the most recent news articles! This was an additional project I made for the application, and now serves as the take-home assignment.
+[**Quanto Engineering Application**] - If everything were just 1s and 0s, the world would be boring—no pop music, no socializing, and definitely no Instagram Reels😦. These are the things in life that make us, well, human. And that goes for accounting and finance too! It's not all just about the numbers. People have always been influenced because of opinions, creativity, and of course, the latest news! So WealthSmart takes this idea to heart by contextualizing its financial predicitons and analysis with thousands the most recent news articles! This was an additional project I made for the application, and now serves as the take-home assignment.
 
 ---
 
