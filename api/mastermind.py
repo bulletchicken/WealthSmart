@@ -56,7 +56,7 @@ def analyze_financial_trends(message: str):
 
         # Extract relevant data
         company_info = company_description.get("summary", "No company description available.")
-        news_data = company_description.get("scraped_data", "No news data available.")
+        news_data = company_description.get("titles", "No news data available.")
 
         # Prepare the full data for GPT
         prompt = (
