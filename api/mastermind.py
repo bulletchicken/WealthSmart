@@ -32,6 +32,7 @@ def retrieve_from_s3(file_name):
 
 # Function to make a call to GPT and get a response
 def get_gpt_response(prompt: str):
+    print("start")
     response = openai.chat.completions.create(
         model="gpt-4",
         messages=[
@@ -40,9 +41,10 @@ def get_gpt_response(prompt: str):
         ],
         temperature=0.8,
         #avoid 504 gateway timeout :(
-        max_tokens=300
+        max_tokens=250
         
     )
+    print(response)
     return response.choices[0].message.content
 
 # Function to analyze financial trends using data from S3 and GPT
